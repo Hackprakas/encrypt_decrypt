@@ -2,7 +2,15 @@
 import React from 'react'
 import { encrypt } from 'eth-sig-util';
 
-const message = 'Hello, World!';
+const personData = {
+  "name": "John Doe",
+  "dob": "1990-01-01", // Date of Birth in YYYY-MM-DD format
+  "phoneno": "+1234567890", // Placeholder phone number
+  "age": 33
+   // Placeholder age
+};
+
+const message = JSON.stringify(personData);
 const encryptionPublicKey = "0rBPS+g/Jd7QuXoVXriM+W9oUs/E4L/ytMxSVFiD80g=";
 // const decryptionPublicKey='0xb30585f4c2b942c28cbdf42e387ba6cb9a6da446'
 
