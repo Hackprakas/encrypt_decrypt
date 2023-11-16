@@ -11,8 +11,12 @@
   "dependencies": {
     "eth-sig-util": "^3.0.1",
     "next": "14.0.2",
+    "pako": "^2.1.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "zlib": "^1.0.5",
+    "zlib-node": "^1.0.10",
+    "zlib-sync": "^0.1.9"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
