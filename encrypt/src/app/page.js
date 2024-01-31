@@ -1,46 +1,44 @@
 "use client"
-import React from 'react'
-import { encrypt } from 'eth-sig-util';
-const encryptionPublicKey = "0rBPS+g/Jd7QuXoVXriM+W9oUs/E4L/ytMxSVFiD80g=";
+import { getname } from '../../actions/actions1';
+import { useState } from 'react';
+import Button from "../app/components/button"
 
-async function fetchs() {
-   const response = await fetch('./api/ipf', {
-    method: 'GET',
-    headers: {
-      accept: 'application/json'
+
+  
+  function page() {
+    const[name,setName]=useState("");
+    async function fetchs(e) {
+      e.preventDefault();
+      const names="prakash";
+       const response = await fetch('./api/ipf/', {
+        method: 'POST',
+        body:JSON.stringify({names})
+      })
+      if (!response.ok) {
+        throw new Error("something");
+      }
+      const responses=await response.json();
+      console.log(responses.data.names);
+      const result=responses.data.names;
+      setName(result)
     }
-  }); 
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-  return await response.json();
-}
 
-async function decryptedMessage(text) {
-   const decryptedMessages = await window.ethereum.request({
-    method: 'eth_decrypt',
-    params: [text, "0xb30585f4c2b942c28cbdf42e387ba6cb9a6da446"],
-  });
-  console.log(decryptedMessages)
-}
-async function connect() {
-  await window.ethereum.request({
-    "method": "eth_requestAccounts",
-    "params": []
-  });
-}
-async function getdata(){
-   const data=await fetchs();
-   const encryptedMessage = encrypt(encryptionPublicKey, { data: JSON.stringify(data)}, 'x25519-xsalsa20-poly1305');
-    const ciphertext=`0x${Buffer.from(JSON.stringify(encryptedMessage), "utf8").toString("hex")}`;
-    decryptedMessage(ciphertext)
-    console.log(data)
- }
+    async function hello(e){
+      e.preventDefault();
+      const detail=await getname("prakash");
+      console.log(detail)
+      setName(detail)
+    }
 
-function page() {
+  
+  
   return (<>
-    <button className='bg-white text-black' onClick={getdata}>get data and decrypt</button>
-    <button className='bg-white text-black' onClick={connect}>connect</button>
+
+  <form onSubmit={hello}>
+<input type="text" name="name" placeholder='enter here'/>
+   <Button/>
+   <button onClick={console.log(name)}>hey</button>
+  </form>
   </>
   )
 }
