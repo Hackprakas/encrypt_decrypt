@@ -1,14 +1,14 @@
-import { NextApiRequest, NextApiResponse } from "next";
+
 import { NextRequest, NextResponse } from "next/server";
 
-export  async function POST(req:Request,res:Response) {
+export  async function GET(req:Request,res:Response) {
   try {
-    const data = await req.json()
-    console.log(data);
+    // const data = await req.json()
+    // console.log(data);
 
     // Do something with the data (processing or saving to a database, for example)
 
-    return NextResponse.json({ data });
+    return NextResponse.json({ message: "Hello, World!"});
   } catch (error) {
     console.error(error);
     
