@@ -2,7 +2,7 @@
 import { getname } from '../../actions/actions1';
 import { useState } from 'react';
 import Button from "./components/button"
-import { getnames } from '../../actions/actions2';
+
 
 
   
@@ -26,11 +26,11 @@ import { getnames } from '../../actions/actions2';
 
     async function hello(){
       // "use server"
-      const detail=await getname("prakash");
-      const res=await getnames(detail)
-      console.log(detail)
-      console.log("res"+res);
-      setName(res)
+      // const detail=await getname("prakash");
+      // // const res=await getnames(detail)
+      // console.log(detail)
+      // console.log("res"+res);
+      // setName(res)
     }
 
   
